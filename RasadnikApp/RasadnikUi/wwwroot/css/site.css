@@ -57,10 +57,12 @@ a, .btn-link {
 
 .sidebar-show {
     right: var(--sidebar-width);
+    transition: right 0.5s;
 }
 
 .sidebar-collapse {
     right: 0;
+    transition: right 0.5s;
 }
 
 .cover-image-navigate, .cover-image-navigate:focus, .cover-image-navigate:active {
