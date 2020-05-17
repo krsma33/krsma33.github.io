@@ -1,8 +1,15 @@
-﻿<div class="container-fluid">
-    <a href="https://www.facebook.com">
+﻿<div class="@Class">
+    <a class="pr-1 text-decoration-none" href="https://www.facebook.com">
         <i class="fab fa-facebook"></i>
     </a>
-    <a href="https://www.instagram.com">
+    <a class="pr-1 text-decoration-none" href="https://www.instagram.com">
         <i class="fab fa-instagram-square"></i>
     </a>
 </div>
+
+@code  {
+
+    [Parameter]
+    public string Class { get; set; }
+
+}

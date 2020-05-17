@@ -1,0 +1,30 @@
+﻿<style>
+    .logo {
+        color: var(--main-header-color);
+        text-align: center;
+        align-content: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>
+
+<div class="logo">
+    <p class="@rasadnikClass" style="color: white; font-family: 'Cinzel'; font-weight: bold; letter-spacing: @rasadnikLetterSpacing; ">RASADNIK</p>
+    <p class="@veselaTujaClass" style="font-family: 'Hojas de Plata'; letter-spacing: @veselaTujaLetterSpacing; ">Vesela Tuja</p>
+</div>
+
+@code {
+
+    [Parameter]
+    public bool Large { get; set; }
+
+    private string rasadnikClass => Large ? "h1" : "h5";
+    private string veselaTujaClass => Large ? "display-1" : "h1";
+
+    private string rasadnikLetterSpacing => Large ? "0.72rem" : "0.3rem";
+    private string veselaTujaLetterSpacing => Large ? "0.96rem" : "0.4rem";
+
+}
+
