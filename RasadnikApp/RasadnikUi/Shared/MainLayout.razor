@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="main-viewport @NavMenuCssClass">
-    <div class="main">
+<div class="main-viewport ">
+    <div class="main @NavMenuCssClass">
         <div class="content" @onclick="CloseNavMenu">
             @Body
         </div>
@@ -28,9 +28,7 @@
 @code {
     private bool collapseNavMenu = true;
 
-    //private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private string NavMenuCssClass => collapseNavMenu ? "sidebar-collapse" : "sidebar-show";
+    private string NavMenuCssClass => collapseNavMenu ? "main-show" : "main-collapse";
 
     private string NavMenuButton => collapseNavMenu ? "navbar-button-collapsed" : "navbar-button";
 

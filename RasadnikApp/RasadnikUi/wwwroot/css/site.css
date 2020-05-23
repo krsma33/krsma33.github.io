@@ -47,12 +47,6 @@
 html, body {
     font-family: 'Quattrocento';
     color: var(--main-light-color);
-    background-color: var(--main-darkest-color);
-}
-
-body {
-    max-width: 100%;
-    overflow-x: hidden;
 }
 
 a, .btn-link {
@@ -96,12 +90,12 @@ a, .btn-link {
     flex-direction: row;
 }
 
-.sidebar-show {
+.main-collapse {
     right: var(--sidebar-width);
     transition: right 0.5s;
 }
 
-.sidebar-collapse {
+.main-show {
     right: 0;
     transition: right 0.5s;
 }
@@ -143,7 +137,9 @@ app {
 .main {
     flex: 1;
     position: relative;
-    width: 100vw;
+    width: 100%;
+    z-index: 9;
+    background-color: var(--main-darkest-color);
 }
  
     .main .top-row {
@@ -166,8 +162,9 @@ app {
     background-color: var(--main-darkest-color);
     height: 100vh;
     width: var(--sidebar-width);
-    position: sticky;
+    position: fixed;
     top: 0;
+    right: 0;
 }
     .sidebar .separator {
         font-weight: bold;
