@@ -243,6 +243,7 @@ app {
     outline: none;
     background-color: transparent;
     font-size: 36px;
+    transition: right 0.5s;
 }
 
 .navbar-button-collapsed, .navbar-button-collapsed:focus, .navbar-button-collapsed:active {
@@ -255,6 +256,7 @@ app {
     outline: none;
     background-color: transparent;
     font-size: 36px;
+    transition: right 0.5s;
 }
 
     .navbar-button:hover, .navbar-button-collapsed:hover {
