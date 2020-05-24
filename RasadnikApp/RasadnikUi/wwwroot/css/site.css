@@ -47,6 +47,8 @@
 html, body {
     font-family: 'Quattrocento';
     color: var(--main-light-color);
+    height: 100%;
+    margin: 0;
 }
 
 a, .btn-link {
@@ -137,9 +139,9 @@ app {
 .main {
     flex: 1;
     position: relative;
-    width: 100%;
     z-index: 9;
     background-color: var(--main-darkest-color);
+    min-height: 100vh;
 }
  
     .main .top-row {

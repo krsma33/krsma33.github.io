@@ -1,11 +1,10 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="main-viewport ">
+<div class="main-viewport vw-100">
     <div class="main @NavMenuCssClass">
         <div class="content" @onclick="CloseNavMenu">
             @Body
         </div>
-
         <button @onclick="ToggleNavMenu" class="@NavMenuButton">
             <span>
                 @if (collapseNavMenu)
@@ -19,8 +18,9 @@
             </span>
         </button>
     </div>
+    
     <div class="sidebar px-5">
-        <NavMenu />
+        <NavMenu OnNavigate="CloseNavMenu"/>
     </div>
 </div>
 
@@ -32,12 +32,12 @@
 
     private string NavMenuButton => collapseNavMenu ? "navbar-button-collapsed" : "navbar-button";
 
-    private void ToggleNavMenu()
+    void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
 
-    private void CloseNavMenu()
+    void CloseNavMenu()
     {
         collapseNavMenu = true;
     }

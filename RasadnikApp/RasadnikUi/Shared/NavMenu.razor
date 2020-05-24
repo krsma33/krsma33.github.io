@@ -8,17 +8,17 @@
 
     <ul class="nav flex-column">
         <li class="nav-item">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="@(() => OnNavigate.InvokeAsync(this))">
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
         </li>
         <li class="nav-item">
-            <NavLink class="nav-link" href="gallery">
+            <NavLink class="nav-link" href="gallery"  @onclick="@(() => OnNavigate.InvokeAsync(this))">
                 <span class="oi oi-plus" aria-hidden="true"></span> Gallery
             </NavLink>
         </li>
         <li class="nav-item">
-            <NavLink class="nav-link" href="#welcome">
+            <NavLink class="nav-link" href="#welcome" @onclick="@(() => OnNavigate.InvokeAsync(this))">
                 <span class="oi oi-plus" aria-hidden="true"></span> Welcome
             </NavLink>
         </li>
@@ -34,7 +34,10 @@
     <SocialNetworksLinks Class="position-absolute social-networks-sidebar" />
 </div>
 
-
+@code {
+    [Parameter]
+    public EventCallback OnNavigate { get; set; }
+}
 
 
 
