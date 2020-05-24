@@ -1,46 +1,4 @@
-﻿<style>
-    .page-main {
-        height: 100%;
-        width: 100%;
-        position: relative;
-        top: 0;
-    }
-
-    .cover {
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: 0;
-    }
-
-    .cover-image {
-        height: 25vh;
-        width: 100%;
-        object-fit: cover;
-    }
-
-    .page-body-container {
-        top: 25vh;
-        min-height: 75vh;
-        position: absolute;
-        background-color: var(--main-light-color2);
-        color: var(--main-darkest-color);
-        z-index: 1;
-    }
-
-    .page-body {
-        height: 100%;
-    }
-
-    .page-footer {
-
-        background-color: var(--main-darkest-color);
-        color: var(--main-light-color);
-    }
-
-</style>
-
-<div class="page-main">
+﻿<div class="page-main">
 
         <div class="cover">
             <img class="cover-image" src="@CoverImageSrc" />
@@ -51,8 +9,8 @@
                 @ChildContent
             </div>
 
-            <div class="page-footer mt-auto p-4">
-                <SocialNetworksLinks Class="social-networks-sidebar" />
+            <div class="page-footer mt-auto p-3">
+                <SocialNetworksLinks Class="social-networks-bottombar" />
             </div>
         </div>
 

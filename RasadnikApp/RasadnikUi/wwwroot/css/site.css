@@ -213,20 +213,63 @@ app {
                 color: white;
             }
 
-.social-networks-sidebar {
-    bottom: 1.1rem;
+.page-main {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: 0;
+}
+
+.cover {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.cover-image {
+    height: 25vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.page-body-container {
+    top: 25vh;
+    min-height: 75vh;
+    position: absolute;
+    background-color: var(--main-light-color2);
+    color: var(--main-darkest-color);
+    z-index: 1;
+}
+
+.page-body {
+    height: 100%;
+}
+
+.page-footer {
+    background-color: var(--main-darkest-color);
+    color: var(--main-light-color);
+}
+
+.social-networks-bottombar {
+    text-align: right;
     font-size: 20px;
 }
 
-    .social-networks-sidebar i {
+.social-networks-sidebar {
+    bottom: 0;
+    font-size: 20px;
+}
+
+    .social-networks-sidebar i, .social-networks-bottombar i {
         color: var(--main-header-color);
         opacity: 0.8;
     }
 
-        .social-networks-sidebar i:hover {
-            color: var(--main-header-color);
-            opacity: 1.0;
-        }
+    .social-networks-sidebar i:hover, .social-networks-bottombar i:hover {
+        color: var(--main-header-color);
+        opacity: 1.0;
+    }
 
 .content {
     height: 100%;
