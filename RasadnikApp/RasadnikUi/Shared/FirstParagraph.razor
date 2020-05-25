@@ -1,0 +1,21 @@
+﻿<div id="@Id" class="page-light p-5">
+    <div class="container text-center p-5" style="max-width: 500px;">
+        <p class="h6 small text-uppercase font-weight-bold m-0" style="letter-spacing: 4px;">@SubTitle</p>
+        <p class="h2 font-weight-light mt-3 mb-2" style="letter-spacing: 1px;">@Title</p>
+        <p class="text-wrap font-weight-light m-0">@Text</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    [Parameter]
+    public string SubTitle { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Text { get; set; }
+}

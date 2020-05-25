@@ -3,13 +3,12 @@
 :root {
     --main-darkest-color: #222629;
     --main-dark-color: #474B4F;
-    --main-light-color: #FFFFFF;
+    --main-light-color: #F5F5F5;
     --main-light-color2: #dedad7;
     --text-color: #17252A;
     --main-outline-color: #86C232;
     --darker-outline-color: #61892F;
-    --main-header-color: #86C232;
-
+    --main-header-color: #8AC832;
     --sidebar-width: 380px;
 }
 
@@ -33,6 +32,32 @@
     font-weight: bolder;
 }
 
+@font-face {
+    font-family: 'Jost';
+    src: url(../fonts/Jost/static/Jost-Regular.ttf) format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: url(../fonts/Jost/static/Jost-Bold.ttf) format('truetype'); /* Safari, Android, iOS */
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: url(../fonts/Jost/static/Jost-Black.ttf) format('truetype'); /* Safari, Android, iOS */
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: url(../fonts/Jost/static/Jost-Light.ttf) format('truetype'); /* Safari, Android, iOS */
+    font-weight: 300;
+    font-style: normal;
+}
+
 
 @font-face {
     font-family: 'Quattrocento';
@@ -42,11 +67,11 @@
 @font-face {
     font-family: 'Quattrocento';
     src: url(../fonts/Quattrocento/Quattrocento-Bold.ttf) format('truetype'); /* Safari, Android, iOS */
-    font-weight: bold;
+    font-weight: 700;
 }
 
 html, body {
-    font-family: 'Quattrocento';
+    font-family: 'Jost';
     background-color: var(--main-darkest-color);
     color: var(--main-light-color);
     height: 100%;
@@ -111,12 +136,11 @@ a, .btn-link {
     bottom: 25%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: var(--main-light-color);
+    color: white;
     font-size: 36px;
 }
 
     .cover-image-navigate:hover {
-        color: var(--main-light-color);
         font-size: 40px;
     }
 
@@ -237,7 +261,7 @@ app {
     top: 25vh;
     min-height: 75vh;
     position: absolute;
-    background-color: var(--main-light-color2);
+    background-color: var(--main-header-color);
     color: var(--main-darkest-color);
     z-index: 1;
 }
@@ -246,9 +270,14 @@ app {
     height: 100%;
 }
 
-.page-footer {
+.page-dark {
     background-color: var(--main-darkest-color);
     color: var(--main-light-color);
+}
+
+.page-light {
+    color: var(--main-darkest-color);
+    background-color: var(--main-light-color);
 }
 
 .social-networks-bottombar {
@@ -280,7 +309,7 @@ app {
     position: fixed;
     top: 30px;
     right: 405px;
-    color: var(--main-light-color);
+    color: white;
     border: none;
     outline: none;
     background-color: transparent;
@@ -293,7 +322,7 @@ app {
     position: fixed;
     top: 30px;
     right: 25px;
-    color: var(--main-light-color);
+    color: white;
     border: none;
     outline: none;
     background-color: transparent;
