@@ -1,9 +1,50 @@
 ﻿@page "/gallery"
 
 <PageLayout>
-    <FirstParagraph SubTitle="Domaci proizvod" Title="Dugogodisnje Iskustvo" Text="Predstavljamo vam ukrasno bilje najviseg kvaliteta. Uzgajano sa paznjom i ljubavlju. Pogledajte nas asortiman i uverite se zasto su nase biljke odlican izbor." />
+    <FirstParagraph Class="page-light p-5" SubTitle="Domaci proizvod" Title="Dugogodisnje Iskustvo" Text="Predstavljamo vam ukrasno bilje najviseg kvaliteta. Uzgajano sa paznjom i ljubavlju. Pogledajte nas asortiman i uverite se zasto su nase biljke odlican izbor." />
+
+    <div class="m-5">
+        <RadzenDataList PageSize="5" WrapItems="true" AllowPaging="true" Data="@orders" TItem="Order">
+            <Template Context="order">
+                <RadzenCard Style="width:640px; padding: 1px; margin: 1px;">
+                    <img class="img-fluid h-100 w-100" src="@order.ImageSrc" />
+                </RadzenCard>
+            </Template>
+        </RadzenDataList>
+    </div>
+
 </PageLayout>
 
 @code {
+    class Order
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Street { get; set; }
+        public int Number { get; set; }
+        public string ImageSrc { get; set; }
 
+    }
+
+    bool devMode = true;
+
+    List<Order> orders = new List<Order>();
+
+    protected override void OnInitialized()
+    {
+        orders.Add(new Order { Name = "Robo", Surname = "Bobo", Street = "Cyberstrase", Number = 12, ImageSrc= "images/1276576.jpg"});
+        orders.Add(new Order { Name = "S", Surname = "A", Street = "Cyberstrase", Number = 11, ImageSrc = "images/265555.jpg" });
+        orders.Add(new Order { Name = "W", Surname = "X", Street = "SSS", Number = 33, ImageSrc = "images/877380.jpg" });
+        orders.Add(new Order { Name = "Robo", Surname = "Bobo", Street = "Cyberstrase", Number = 12, ImageSrc = "images/1276576.jpg" });
+        orders.Add(new Order { Name = "S", Surname = "A", Street = "Cyberstrase", Number = 11, ImageSrc = "images/265555.jpg" });
+        orders.Add(new Order { Name = "W", Surname = "X", Street = "SSS", Number = 33, ImageSrc = "images/877380.jpg" });
+
+        if (devMode)
+        {
+            orders.Add(new Order { Name = "W", Surname = "X", Street = "SSS", Number = 33, ImageSrc = "images/265725.jpg" });
+        }
+
+
+        base.OnInitialized();
+    }
 }

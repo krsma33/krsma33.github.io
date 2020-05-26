@@ -10,4 +10,8 @@
     <Folder Include="wwwroot\fonts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Radzen.Blazor" Version="2.9.6" />
+  </ItemGroup>
+
 </Project>

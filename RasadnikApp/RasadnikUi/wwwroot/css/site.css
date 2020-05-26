@@ -78,6 +78,16 @@ html, body {
     margin: 0;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--main-dark-color);
+}
+
+
+
 a, .btn-link {
     color: #0366d6;
 }
@@ -364,4 +374,3 @@ app {
         right: 0.75rem;
         top: 0.5rem;
     }
-
