@@ -1,50 +1,57 @@
 ﻿@page "/gallery"
+@inject IPlantFamilyService _plantFamilyService
+@inject IPlantService _plantService
 
 <PageLayout>
-    <FirstParagraph Class="page-light p-5" SubTitle="Domaci proizvod" Title="Dugogodisnje Iskustvo" Text="Predstavljamo vam ukrasno bilje najviseg kvaliteta. Uzgajano sa paznjom i ljubavlju. Pogledajte nas asortiman i uverite se zasto su nase biljke odlican izbor." />
+    <FirstParagraph Class="page-light p-5" SubTitle="Domaci proizvod" Title="Dugogodisnje Iskustvo" Text="Predstavljamo vam ukrasne biljke vrhunskog kvaliteta. Uzgajano sa paznjom i ljubavlju. Pogledajte nas asortiman i uverite se zasto su nase biljke odlican izbor." />
 
     <div class="m-5">
-        <RadzenDataList PageSize="5" WrapItems="true" AllowPaging="true" Data="@orders" TItem="Order">
-            <Template Context="order">
-                <RadzenCard Style="width:640px; padding: 1px; margin: 1px;">
-                    <img class="img-fluid h-100 w-100" src="@order.ImageSrc" />
-                </RadzenCard>
-            </Template>
-        </RadzenDataList>
+
+        <div class="d-flex flex-row">
+            @foreach (var family in plantFamilies)
+            {
+            <button class="m-2 @SetClassIfSelected(family)" @onclick="@(async () => await SelectPlantsByFamily(family))">
+                @family.Name
+            </button>
+            }
+        </div>
+
+        <PlantsDisplay Items="@plants" Context="plant">
+            <PlantComponent Plant="@plant" />
+        </PlantsDisplay>
+
     </div>
 
 </PageLayout>
 
 @code {
-    class Order
-    {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Street { get; set; }
-        public int Number { get; set; }
-        public string ImageSrc { get; set; }
 
+    private List<PlantFamily> plantFamilies;
+    private PlantFamily selectedPlantFamily;
+
+    private List<Plant> plants = new List<Plant>();
+
+    private string SetClassIfSelected(PlantFamily plantFamily)
+    {
+        return plantFamily.Id == selectedPlantFamily.Id ? "font-weight-bold" : string.Empty;
     }
 
-    bool devMode = true;
-
-    List<Order> orders = new List<Order>();
-
-    protected override void OnInitialized()
+    private async Task SelectPlantsByFamily(PlantFamily plantFamily)
     {
-        orders.Add(new Order { Name = "Robo", Surname = "Bobo", Street = "Cyberstrase", Number = 12, ImageSrc= "images/1276576.jpg"});
-        orders.Add(new Order { Name = "S", Surname = "A", Street = "Cyberstrase", Number = 11, ImageSrc = "images/265555.jpg" });
-        orders.Add(new Order { Name = "W", Surname = "X", Street = "SSS", Number = 33, ImageSrc = "images/877380.jpg" });
-        orders.Add(new Order { Name = "Robo", Surname = "Bobo", Street = "Cyberstrase", Number = 12, ImageSrc = "images/1276576.jpg" });
-        orders.Add(new Order { Name = "S", Surname = "A", Street = "Cyberstrase", Number = 11, ImageSrc = "images/265555.jpg" });
-        orders.Add(new Order { Name = "W", Surname = "X", Street = "SSS", Number = 33, ImageSrc = "images/877380.jpg" });
+        selectedPlantFamily = plantFamily;
 
-        if (devMode)
+        plants = await _plantService.GetPlantsByPlantFamily(selectedPlantFamily);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        plantFamilies = await _plantFamilyService.GetPlantFamilies();
+
+        if (selectedPlantFamily == null)
         {
-            orders.Add(new Order { Name = "W", Surname = "X", Street = "SSS", Number = 33, ImageSrc = "images/265725.jpg" });
+            await SelectPlantsByFamily(plantFamilies.First());
         }
 
-
-        base.OnInitialized();
+        await base.OnInitializedAsync();
     }
 }

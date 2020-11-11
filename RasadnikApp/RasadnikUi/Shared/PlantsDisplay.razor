@@ -1,0 +1,37 @@
+﻿@typeparam TItem
+
+<div class="container-fluid">
+    <div class="d-flex flex-column">
+        @foreach (var items in itemsChunks)
+        {
+            <div class="d-flex flex-md-row flex-column">
+                @foreach (var item in items)
+                {
+                    @ChildContent(item)
+                }
+            </div>
+        }
+    </div>
+</div>
+
+
+@code {
+
+    private List<TItem> items;
+
+    [Parameter]
+    public List<TItem> Items
+    {
+        get => items;
+        set
+        {
+            items = value;
+            itemsChunks = items?.SplitIntoVariableChunks() ?? new List<List<TItem>>();
+        }
+    }
+
+    [Parameter]
+    public RenderFragment<TItem> ChildContent { get; set; }
+
+    private IEnumerable<List<TItem>> itemsChunks;
+}

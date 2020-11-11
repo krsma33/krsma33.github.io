@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RasadnikUi.Services;
 
 namespace RasadnikUi
 {
@@ -28,6 +29,8 @@ namespace RasadnikUi
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            services.AddTransient<IPlantFamilyService, DummyPlantFamilyService>();
+            services.AddTransient<IPlantService, DummyPlantService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
