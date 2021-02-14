@@ -1,0 +1,18 @@
+﻿.button {
+    border: none;
+    background-color: var(--main-light-color);
+    color: var(--main-darkest-color);
+    font-weight: bold;
+    height: 10vh;
+}
+
+.button-selected {
+    border: none;
+    background-color: var(--main-darkest-color);
+    color: var(--main-light-color);
+    font-weight: bold;
+    height: 10vh;
+}
+
+
+

@@ -1,0 +1,49 @@
+﻿<div class="vh-100">
+
+    <a class="navbar-brand my-5" href="" @onclick="@(() => OnNavigate.InvokeAsync(this))">
+        <Logo />
+    </a>
+
+    <p class="separator">─────</p>
+
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="@(() => OnNavigate.InvokeAsync(this))">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item">
+            <NavLink class="nav-link" href="products" @onclick="@(() => OnNavigate.InvokeAsync(this))">
+                <span class="oi oi-plus" aria-hidden="true"></span> Products
+            </NavLink>
+        </li>
+        <li class="nav-item">
+            <NavLink class="nav-link" href="#welcome" @onclick="@(() => OnNavigate.InvokeAsync(this))">
+                <span class="oi oi-plus" aria-hidden="true"></span> Welcome
+            </NavLink>
+        </li>
+        <li class="nav-item">
+            <NavLink class="nav-link" href="gallery" @onclick="@(() => OnNavigate.InvokeAsync(this))">
+                <span class="oi oi-plus" aria-hidden="true"></span> Gallery
+            </NavLink>
+        </li>
+
+    </ul>
+
+    <p class="separator">─────</p>
+
+    <p>Telefon: +381 xx xx xx xxx</p>
+    <p>Email: rasadnik@gmail.com</p>
+
+    <p class="separator">─────</p>
+
+    <SocialNetworksLinks Class="position-absolute social-networks-sidebar py-3" />
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback OnNavigate { get; set; }
+}
+
+
+

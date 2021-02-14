@@ -1,0 +1,54 @@
+﻿@page "/gallery"
+@inject IPlantFamilyService _plantFamilyService
+@inject IPlantService _plantService
+@inject CustomAuthStateProvider _authenticationStateProvider
+
+<PageLayout>
+    <FirstParagraph Class="page-light p-5" SubTitle="Domaci proizvod" Title="Dugogodisnje Iskustvo" Text="Predstavljamo vam ukrasne biljke vrhunskog kvaliteta. Uzgajano sa paznjom i ljubavlju. Pogledajte nas asortiman i uverite se zasto su nase biljke odlican izbor." />
+
+    <div class="m-5">
+
+        <RadzenUpload Url="api/Plant/upload/single" Style="margin-bottom: 20px;"
+                      Progress=@(args => OnProgress(args, "Single file upload")) />
+
+        <RadzenProgressBar @bind-Value="@progress" Style="margin-bottom: 20px" />
+
+        <p>@info</p>
+
+        <AuthorizeView Roles=@AuthPolicies.Admin>
+            <NotAuthorized>
+                <p>Not Authorized</p>
+            </NotAuthorized>
+            <Authorized>
+                <p>Authorized</p>
+            </Authorized>
+        </AuthorizeView>
+
+    </div>
+
+</PageLayout>
+
+@code {
+
+    double progress = 0;
+    string info = "";
+
+    void OnProgress(UploadProgressArgs args, string name)
+    {
+        progress = args.Progress;
+
+        if (args.Progress == 100)
+        {
+            foreach (var file in args.Files)
+            {
+                info = $"Uploaded: {file.Name} / {file.Size} bytes";
+            }
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        _authenticationStateProvider.NotifyAuthenticationStateChanged();
+    }
+
+}

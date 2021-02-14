@@ -1,0 +1,75 @@
+﻿@page "/products"
+@inject IPlantFamilyService _plantFamilyService
+@inject IPlantService _plantService
+
+<PageLayout CoverImageSrc="images/turquoise-lake-2K-wallpaper.jpg">
+    <FirstParagraph Class="page-light p-5" SubTitle="Domaci proizvod" Title="Dugogodisnje Iskustvo" Text="Predstavljamo vam ukrasne biljke vrhunskog kvaliteta. Uzgajano sa paznjom i ljubavlju. Pogledajte nas asortiman i uverite se zasto su nase biljke odlican izbor." />
+
+    <div class="mx-4 mt-5 d-flex flex-row">
+
+        @foreach (var family in plantFamilies)
+        {
+            <div class="flex-fill @SetClassIfSelected(family)" @onclick="@(async () => await SelectPlantsByFamily(family))">
+                @family.Name
+            </div>
+        }
+    </div>
+
+    <div class="mx-5 mb-5 mt-2">
+
+        <PlantsDisplay Items="@plants" Context="plant">
+            <PlantComponent Plant="@plant" />
+        </PlantsDisplay>
+
+    </div>
+
+</PageLayout>
+
+@code {
+
+    private List<PlantFamily> plantFamilies = new List<PlantFamily>();
+    private PlantFamily selectedPlantFamily;
+
+    private List<Plant> plants = new List<Plant>();
+
+    private string SetClassIfSelected(PlantFamily plantFamily)
+    {
+        return plantFamily.Id == selectedPlantFamily.Id ? "button-selected" : "button";
+    }
+
+    async Task OnChange(object value, string name)
+    {
+        selectedPlantFamily = value as PlantFamily;
+
+        var plantsEnumerable = await _plantService.GetPlantsByPlantFamilyId(selectedPlantFamily.Id);
+
+        var tempDoublePlants = plantsEnumerable.ToArray();
+
+        plants = plantsEnumerable.Concat(tempDoublePlants).Concat(tempDoublePlants).ToList();
+    }
+
+    private async Task SelectPlantsByFamily(PlantFamily plantFamily)
+    {
+        selectedPlantFamily = plantFamily;
+
+        var plantsEnumerable = await _plantService.GetPlantsByPlantFamilyId(selectedPlantFamily.Id);
+
+        var tempDoublePlants = plantsEnumerable.ToArray();
+
+        plants = plantsEnumerable.Concat(tempDoublePlants).Concat(tempDoublePlants).ToList();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var plantFamiliesEnumerable = await _plantFamilyService.GetPlantFamilies();
+
+        plantFamilies = plantFamiliesEnumerable.ToList();
+
+        if (selectedPlantFamily == null)
+        {
+            await SelectPlantsByFamily(plantFamilies.First());
+        }
+
+        await base.OnInitializedAsync();
+    }
+}

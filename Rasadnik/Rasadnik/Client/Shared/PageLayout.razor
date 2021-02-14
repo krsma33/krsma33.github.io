@@ -1,0 +1,23 @@
+﻿<div class="page-main">
+
+    <div class="cover">
+        <img class="cover-image" src="@CoverImageSrc" />
+    </div>
+
+    <div class="page-body-container d-flex flex-column w-100">
+        <div class="page-body h-100">
+            @ChildContent
+        </div>
+        <Footer></Footer>
+    </div>
+
+</div>
+
+
+@code {
+    [Parameter]
+    public string CoverImageSrc { get; set; } = "images/turquoise-lake-2K-wallpaper.jpg";
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

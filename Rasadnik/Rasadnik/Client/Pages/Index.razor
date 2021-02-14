@@ -1,0 +1,44 @@
+﻿@page "/"
+@inherits FragmentNavigationBase
+
+<div class="position-relative">
+    @*<img class="cover-image" src="images/turquoise-lake-2K-wallpaper.jpg" />*@
+
+    <div class="embed-responsive embed-responsive-16by9">
+        <video class="embed-responsive-item" src="videos/cover-video.mp4" autoplay loop />
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="hero-header p-lg-5 w-100">
+        <Logo Large="true" />
+        <div class="hero-emphasize bg-dark rounded-lg shadow-lg"></div>
+    </div>
+
+    <a href="#welcome">
+        <span class="cover-image-navigate btn">
+            <i class="fas fa-chevron-down"></i>
+        </span>
+    </a>
+
+</div>
+
+<FirstParagraph id="welcome" Class="page-dark p-5" SubTitle="Nasa Prica" Title="Vrhunski Kvalitet" Text="Vesela Tuja je rasadnik ukrasnih biljaka lociran u centralnoj Srbiji. Pazljiv odabir sadnica i dugogodisnje iskustvo cini nase biljke savrsenim dodatkom vasoj basti." />
+
+<div class="container-fluid p-0">
+    <div class="row no-gutters">
+        <div class="col-12">
+            <img src="images/877380.jpg" class="img-fluid" alt="Group 1" />
+        </div>
+    </div>
+    <div class="row no-gutters">
+        <div class="col-12 col-md-6">
+            <img src="images/266282.jpg" class="img-fluid" alt="Group 2" />
+        </div>
+        <div class="col-12 col-md-6">
+            <img src="images/1276576.jpg" class="img-fluid" alt="Group 3" />
+        </div>
+    </div>
+</div>
+
+<Footer></Footer>

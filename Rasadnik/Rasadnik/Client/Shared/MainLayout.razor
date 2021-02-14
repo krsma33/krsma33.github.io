@@ -1,0 +1,45 @@
+﻿@inherits LayoutComponentBase
+@inject IPrerendering _prerendering
+
+<div class="main-viewport">
+    <div class="main @NavMenuCssClass">
+        <div class="content" @onclick="CloseNavMenu">
+            @Body
+        </div>
+        <button @onclick="ToggleNavMenu" class="@NavMenuButton">
+            <span>
+                @if (collapseNavMenu)
+                {
+                    <i class="fas fa-bars"></i>
+                }
+                else
+                {
+                    <i class="fas fa-times"></i>
+                }
+            </span>
+        </button>
+    </div>
+
+    <div class="sidebar px-5">
+        <NavMenu OnNavigate="CloseNavMenu" />
+    </div>
+</div>
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "main-show" : "main-collapse";
+
+    private string NavMenuButton => collapseNavMenu ? "navbar-button-collapsed" : "navbar-button";
+
+    void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    void CloseNavMenu()
+    {
+        collapseNavMenu = true;
+    }
+}
